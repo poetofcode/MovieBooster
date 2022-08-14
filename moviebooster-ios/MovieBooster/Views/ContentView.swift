@@ -13,16 +13,16 @@ struct ContentView: View {
     
     var body: some View {
         List {
-            ForEach(viewModel.screenState.items, id: \.self) { str in
+            ForEach(viewModel.uiState.items, id: \.self) { str in
                 CustomRow(content: str)
             }
         }
         .navigationTitle("Names")
-        .searchable(text: $viewModel.screenState.searchText, placement: .navigationBarDrawer(displayMode: .always))
+        .searchable(text: $viewModel.uiState.searchText, placement: .navigationBarDrawer(displayMode: .always))
         .onSubmit(of: .search, {
-            print("onSubmit: \(viewModel.screenState.searchText)")
+            print("onSubmit: \(viewModel.uiState.searchText)")
         })
-        .onChange(of: viewModel.screenState.searchText, perform: viewModel.onChangeSearchText)
+        .onChange(of: viewModel.uiState.searchText, perform: viewModel.onChangeSearchText)
         .onAppear(perform: viewModel.onAppear)
         
     }
