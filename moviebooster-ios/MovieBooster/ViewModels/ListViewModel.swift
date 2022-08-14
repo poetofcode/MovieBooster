@@ -19,6 +19,11 @@ class ListViewModel : ObservableObject {
     private let rxState = BehaviorRelay(value: ScreenState())
     private let searchTextSeq = BehaviorRelay(value: "")
     
+    private var currState: ScreenState {
+        get { return rxState.value }
+        set {}
+    }
+    
     init(repository: Repository) {
         self.repository = repository
         
@@ -54,13 +59,14 @@ class ListViewModel : ObservableObject {
     private func loadListsFilteredByQuery(_ searchQuery: String = "") {
         let useCase = PostUseCase(repository: PostRepository())
         
+        rxState.accept(currState.copy(isLoading: true))
+        
         useCase.fetchPosts(searchQuery: searchQuery) { posts in
-            self.rxState.accept(self.currState().copy(items: posts.map { $0.title }))
+            self.rxState.accept(self.currState.copy(
+                items: posts.map { $0.title },
+                isLoading: false
+            ))
         }
     }
-    
-    private func currState() -> ScreenState {
-        return rxState.value
-    }
-       
+      
 }

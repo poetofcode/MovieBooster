@@ -13,8 +13,20 @@ struct ContentView: View {
     
     var body: some View {
         List {
-            ForEach(viewModel.uiState.items, id: \.self) { str in
-                CustomRow(content: str)
+            if (viewModel.uiState.isLoading) {
+                HStack {
+                    Spacer()
+                    ProgressView()
+                       .progressViewStyle(CircularProgressViewStyle())
+                       .scaleEffect(x: 3, y: 3, anchor: .center)
+                    Spacer()
+                }
+                .padding([.top, .bottom])
+                .listRowBackground(Color.gray.opacity(0))
+            } else {
+                ForEach(viewModel.uiState.items, id: \.self) { str in
+                    CustomRow(content: str)
+                }
             }
         }
         .navigationTitle("Names")
@@ -24,7 +36,6 @@ struct ContentView: View {
         })
         .onChange(of: viewModel.uiState.searchText, perform: viewModel.onChangeSearchText)
         .onAppear(perform: viewModel.onAppear)
-        
     }
 }
 
