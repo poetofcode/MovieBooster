@@ -7,7 +7,7 @@ class PostUseCase(
 ) {
 
     fun fetchPosts(cb: (List<Post>) -> Unit) {
-        CoroutineScope(SupervisorJob() + Dispatchers.Default).launch {
+        CoroutineScope(Job() + Dispatchers.Default).launch {
             val posts = repository.fetchPosts()
 
             withContext(Dispatchers.Main) {
