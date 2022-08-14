@@ -1,0 +1,6 @@
+framework module kmmshared {
+    umbrella header "kmmshared.h"
+
+    export *
+    module * { export * }
+}

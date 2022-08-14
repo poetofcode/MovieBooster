@@ -1,6 +1,0 @@
-framework module kotlinmultiplatformsharedmodule {
-    umbrella header "kotlinmultiplatformsharedmodule.h"
-
-    export *
-    module * { export * }
-}

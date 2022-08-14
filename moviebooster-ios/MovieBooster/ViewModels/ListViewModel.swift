@@ -9,8 +9,7 @@ import Foundation
 import SwiftUI
 import RxSwift
 import RxRelay
-
-import kotlinmultiplatformsharedmodule
+import kmmshared
 
 class ListViewModel : ObservableObject {
     @Published var screenData = ScreenData()

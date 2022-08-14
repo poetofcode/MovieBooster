@@ -107,7 +107,7 @@
 		821F87096789B4355E9FA032FFF75D3D /* Reactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC6F120A60E54EECBD5C600EEDB4FC5 /* Reactive.swift */; };
 		82A30FEBF06F6F022E1451B8C6C6DF5C /* Enumerated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240940048007433D52F35BEF2ED2B0CB /* Enumerated.swift */; };
 		839938D96BE40E0C637AF6222ED2F2F0 /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7D7E3D13FD70A25D0FBE5119896C40 /* Empty.swift */; };
-		8477D50628A8464D0099CE72 /* kotlinmultiplatformsharedmodule.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8477D50528A8464D0099CE72 /* kotlinmultiplatformsharedmodule.xcframework */; };
+		8409D7E628A8C7B500C98939 /* kmmshared.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8409D7E528A8C7B500C98939 /* kmmshared.xcframework */; };
 		880AF3C5A437A45C69DCF38E079E333C /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FEBF5334716319E9FBF183CF785B68 /* Timer.swift */; };
 		887B1AD996830823F37F7E4CFBC202F6 /* AnonymousObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB626DF1F29C5E393307612E57B728 /* AnonymousObserver.swift */; };
 		8A8C1AF56B2BAE3E2046312F6F08F06C /* Do.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754720B628B1848C96C3D35D8C1B5C94 /* Do.swift */; };
@@ -332,7 +332,7 @@
 		81943F0138519ECD892EAA5966A5629F /* AsSingle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AsSingle.swift; path = RxSwift/Observables/AsSingle.swift; sourceTree = "<group>"; };
 		83168522D320AB9B9956B1232BEF2BBE /* Map.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Map.swift; path = RxSwift/Observables/Map.swift; sourceTree = "<group>"; };
 		834850413B7F02862804998AA8F15A13 /* Completable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Completable.swift; path = RxSwift/Traits/PrimitiveSequence/Completable.swift; sourceTree = "<group>"; };
-		8477D50528A8464D0099CE72 /* kotlinmultiplatformsharedmodule.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = kotlinmultiplatformsharedmodule.xcframework; path = ../shared/kotlinmultiplatformsharedmodule.xcframework; sourceTree = "<group>"; };
+		8409D7E528A8C7B500C98939 /* kmmshared.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = kmmshared.xcframework; path = ../kmmshared.xcframework; sourceTree = "<group>"; };
 		84971EC7C6A304FD54B23BE87B5B51CF /* PublishRelay.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PublishRelay.swift; path = RxRelay/PublishRelay.swift; sourceTree = "<group>"; };
 		8849F74F1186318F2CD6FFBBAD1FE1A9 /* Pods-MovieBoosterTests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-MovieBoosterTests"; path = Pods_MovieBoosterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8918E04160425A645C4889A512279A06 /* Sequence.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Sequence.swift; path = RxSwift/Observables/Sequence.swift; sourceTree = "<group>"; };
@@ -482,8 +482,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8477D50628A8464D0099CE72 /* kotlinmultiplatformsharedmodule.xcframework in Frameworks */,
 				4EC89BBBFD6D2854CCF11030BE2D1FE1 /* Foundation.framework in Frameworks */,
+				8409D7E628A8C7B500C98939 /* kmmshared.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -801,7 +801,7 @@
 		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8477D50528A8464D0099CE72 /* kotlinmultiplatformsharedmodule.xcframework */,
+				8409D7E528A8C7B500C98939 /* kmmshared.xcframework */,
 				578452D2E740E91742655AC8F1636D1F /* iOS */,
 			);
 			name = Frameworks;
