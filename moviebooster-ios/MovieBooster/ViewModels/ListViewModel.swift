@@ -47,21 +47,23 @@ class ListViewModel : ObservableObject {
     }
     
     private func setRepositoryBinding() {
-        self.repository.getListData().subscribe { [weak self] data in
-            self?.allDataItems = data
-        } onFailure: { error in
-            print(error.localizedDescription)
-        } onDisposed: {
-            print("onDisposed")
+        let useCase = PostUseCase(repository: PostRepository())
+        
+        useCase.fetchPosts { posts in
+            posts.forEach { post in
+                print("Post: \(post.title)")
+            }
+            
+            self.allDataItems = posts.map { post in
+                post.title
+            }
+            
+            var copyData = self.screenDataSeq.value
+            copyData.items = self.allDataItems
+            self.screenDataSeq.accept(copyData)
         }
-        .disposed(by: disposeBag)
     }
-    
-    func greetingFromShared() -> String {
-        return Greeting().greeting()
-    }
-
-    
+   
     func onAppear() {
         screenDataSeq.accept(ScreenData(items: self.allDataItems))
     }
@@ -73,7 +75,7 @@ class ListViewModel : ObservableObject {
         screenDataSeq.accept(copyData)
         searchTextSeq.accept(text)
         
-        print("\(#function) : \(greetingFromShared())")
+        // print("\(#function) : \(greetingFromShared())")
     }
     
 }
