@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2D382B9D7776B6C4B364A33C /* Pods_MovieBoosterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FDD33B217B50EA46C2BB398 /* Pods_MovieBoosterTests.framework */; };
 		2D6D926E36B3580CEA3B9257 /* Pods_MovieBooster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738B76215515E04D92602065 /* Pods_MovieBooster.framework */; };
+		84FBB5AD28A987D2007504DC /* kmmshared.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FBB5AC28A987D2007504DC /* kmmshared.xcframework */; };
 		9210A002289AF5B5003EFF7A /* MovieBoosterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9210A001289AF5B5003EFF7A /* MovieBoosterApp.swift */; };
 		9210A004289AF5B5003EFF7A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9210A003289AF5B5003EFF7A /* ContentView.swift */; };
 		9210A006289AF5B7003EFF7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9210A005289AF5B7003EFF7A /* Assets.xcassets */; };
@@ -46,7 +47,7 @@
 		6FDD33B217B50EA46C2BB398 /* Pods_MovieBoosterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieBoosterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		738B76215515E04D92602065 /* Pods_MovieBooster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieBooster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80D129597B4F553A6FBCADA0 /* Pods-MovieBooster-MovieBoosterUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieBooster-MovieBoosterUITests.debug.xcconfig"; path = "Target Support Files/Pods-MovieBooster-MovieBoosterUITests/Pods-MovieBooster-MovieBoosterUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		84900D3928A82B5A007ABC07 /* kotlinmultiplatformsharedmodule.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = kotlinmultiplatformsharedmodule.framework; path = shared/iosSimulatorArm64/debugFramework/kotlinmultiplatformsharedmodule.framework; sourceTree = "<group>"; };
+		84FBB5AC28A987D2007504DC /* kmmshared.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = kmmshared.xcframework; sourceTree = "<group>"; };
 		92109FFE289AF5B5003EFF7A /* MovieBooster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieBooster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9210A001289AF5B5003EFF7A /* MovieBoosterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieBoosterApp.swift; sourceTree = "<group>"; };
 		9210A003289AF5B5003EFF7A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -72,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84FBB5AD28A987D2007504DC /* kmmshared.xcframework in Frameworks */,
 				2D6D926E36B3580CEA3B9257 /* Pods_MovieBooster.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -111,8 +113,8 @@
 		7EB3DC2786025B2554A54E78 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84FBB5AC28A987D2007504DC /* kmmshared.xcframework */,
 				738B76215515E04D92602065 /* Pods_MovieBooster.framework */,
-				84900D3928A82B5A007ABC07 /* kotlinmultiplatformsharedmodule.framework */,
 				A1B34574F01A56030A8E0C59 /* Pods_MovieBooster_MovieBoosterUITests.framework */,
 				6FDD33B217B50EA46C2BB398 /* Pods_MovieBoosterTests.framework */,
 			);
