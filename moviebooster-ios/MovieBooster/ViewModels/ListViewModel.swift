@@ -47,9 +47,7 @@ class ListViewModel : ObservableObject {
     
     func onChangeSearchText(text: String) {
         print(#function + ": \(text)")
-        var copyData = screenData
-        copyData.searchText = text
-        screenDataSeq.accept(copyData)
+        screenDataSeq.accept(screenDataSeq.value.copy(searchText: text))
         searchTextSeq.accept(text)
     }
 
@@ -57,9 +55,7 @@ class ListViewModel : ObservableObject {
         let useCase = PostUseCase(repository: PostRepository())
         
         useCase.fetchPosts(searchQuery: searchQuery) { posts in
-            var copyData = self.screenDataSeq.value
-            copyData.items = posts.map { $0.title }
-            self.screenDataSeq.accept(copyData)
+            self.screenDataSeq.accept(self.screenDataSeq.value.copy(items: posts.map { $0.title }))
         }
     }
        
