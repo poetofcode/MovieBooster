@@ -17,10 +17,9 @@ class ListViewModel : ObservableObject {
     private let useCase = PostUseCase(repository: PostRepository())
     private let disposeBag = DisposeBag()
     private let rxState = BehaviorRelay(value: ScreenState())
-    private let searchTextSeq = BehaviorRelay(value: "")
-    
+    private let searchTextSeq: PublishRelay<String> = PublishRelay()
     private var currState: ScreenState { rxState.value }
-    private var searchRunning = false
+
     
     init() {
         rxState.subscribe { [weak self] value in
