@@ -16,12 +16,9 @@ struct ContentView: View {
             if (viewModel.uiState.isLoading) {
                 HStack {
                     Spacer()
-                    ProgressView()
-                       .progressViewStyle(CircularProgressViewStyle())
-                       .scaleEffect(x: 3, y: 3, anchor: .center)
+                    Text("Loading...")
                     Spacer()
                 }
-                .padding([.top, .bottom])
                 .listRowBackground(Color.gray.opacity(0))
             } else {
                 ForEach(viewModel.uiState.items, id: \.self) { str in

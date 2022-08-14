@@ -60,8 +60,10 @@ class ListViewModel : ObservableObject {
         let useCase = PostUseCase(repository: PostRepository())
         
         rxState.accept(currState.copy(isLoading: true))
+        print("isLoading = true")
         
         useCase.fetchPosts(searchQuery: searchQuery) { posts in
+            print("isLoading = false")
             self.rxState.accept(self.currState.copy(
                 items: posts.map { $0.title },
                 isLoading: false
