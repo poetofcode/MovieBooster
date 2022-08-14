@@ -14,19 +14,15 @@ import kmmshared
 class ListViewModel : ObservableObject {
     @Published var uiState = ScreenState()
     
-    private let repository: Repository
+    private let useCase = PostUseCase(repository: PostRepository())
     private let disposeBag = DisposeBag()
     private let rxState = BehaviorRelay(value: ScreenState())
     private let searchTextSeq = BehaviorRelay(value: "")
     
-    private var currState: ScreenState {
-        get { return rxState.value }
-        set {}
-    }
+    private var currState: ScreenState { rxState.value }
+    private var searchRunning = false
     
-    init(repository: Repository) {
-        self.repository = repository
-        
+    init() {
         rxState.subscribe { [weak self] value in
             self?.uiState = value
         }
@@ -57,13 +53,9 @@ class ListViewModel : ObservableObject {
     }
 
     private func loadListsFilteredByQuery(_ searchQuery: String = "") {
-        let useCase = PostUseCase(repository: PostRepository())
-        
         rxState.accept(currState.copy(isLoading: true))
-        print("isLoading = true")
         
         useCase.fetchPosts(searchQuery: searchQuery) { posts in
-            print("isLoading = false")
             self.rxState.accept(self.currState.copy(
                 items: posts.map { $0.title },
                 isLoading: false

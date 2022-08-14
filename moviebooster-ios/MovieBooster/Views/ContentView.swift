@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @StateObject private var viewModel = ListViewModel(repository: DataRepository())
+    @StateObject private var viewModel = ListViewModel()
     
     var body: some View {
         List {
