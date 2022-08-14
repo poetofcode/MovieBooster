@@ -197,14 +197,14 @@ __attribute__((swift_name("PostRepository")))
  @note This method converts instances of CancellationException to errors.
  Other uncaught Kotlin exceptions are fatal.
 */
-- (void)fetchPostsWithCompletionHandler:(void (^)(NSArray<KmmsharedPost *> * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("fetchPosts(completionHandler:)")));
+- (void)fetchPostsSearchQuery:(NSString *)searchQuery completionHandler:(void (^)(NSArray<KmmsharedPost *> * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("fetchPosts(searchQuery:completionHandler:)")));
 @end;
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("PostUseCase")))
 @interface KmmsharedPostUseCase : KmmsharedBase
 - (instancetype)initWithRepository:(KmmsharedPostRepository *)repository __attribute__((swift_name("init(repository:)"))) __attribute__((objc_designated_initializer));
-- (void)fetchPostsCb:(void (^)(NSArray<KmmsharedPost *> *))cb __attribute__((swift_name("fetchPosts(cb:)")));
+- (void)fetchPostsSearchQuery:(NSString *)searchQuery cb:(void (^)(NSArray<KmmsharedPost *> *))cb __attribute__((swift_name("fetchPosts(searchQuery:cb:)")));
 @end;
 
 __attribute__((swift_name("KotlinThrowable")))

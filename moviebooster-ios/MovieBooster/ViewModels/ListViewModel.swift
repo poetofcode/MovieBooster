@@ -18,11 +18,9 @@ class ListViewModel : ObservableObject {
     private let disposeBag = DisposeBag()
     private let screenDataSeq = BehaviorRelay(value: ScreenData())
     private let searchTextSeq = BehaviorRelay(value: "")
-    private var allDataItems = [String]()
     
     init(repository: Repository) {
         self.repository = repository
-        setRepositoryBinding()
         
         screenDataSeq.subscribe { [weak self] value in
             self?.screenData = value
@@ -37,35 +35,14 @@ class ListViewModel : ObservableObject {
             })
             .subscribe(onNext: { [weak self] text in
                 guard let self = self else {return}
-                let items = self.allDataItems.filter { value in
-                    value.caseInsensitiveHasPrefix(text)
-                }
-                self.screenData.items = items
+                self.loadListsFilteredByQuery(text)
             })
             .disposed(by: disposeBag)
         
     }
-    
-    private func setRepositoryBinding() {
-        let useCase = PostUseCase(repository: PostRepository())
-        
-        useCase.fetchPosts { posts in
-            posts.forEach { post in
-                print("Post: \(post.title)")
-            }
-            
-            self.allDataItems = posts.map { post in
-                post.title
-            }
-            
-            var copyData = self.screenDataSeq.value
-            copyData.items = self.allDataItems
-            self.screenDataSeq.accept(copyData)
-        }
-    }
-   
+
     func onAppear() {
-        screenDataSeq.accept(ScreenData(items: self.allDataItems))
+        loadListsFilteredByQuery()
     }
     
     func onChangeSearchText(text: String) {
@@ -74,8 +51,16 @@ class ListViewModel : ObservableObject {
         copyData.searchText = text
         screenDataSeq.accept(copyData)
         searchTextSeq.accept(text)
-        
-        // print("\(#function) : \(greetingFromShared())")
     }
-    
+
+    private func loadListsFilteredByQuery(_ searchQuery: String = "") {
+        let useCase = PostUseCase(repository: PostRepository())
+        
+        useCase.fetchPosts(searchQuery: searchQuery) { posts in
+            var copyData = self.screenDataSeq.value
+            copyData.items = posts.map { $0.title }
+            self.screenDataSeq.accept(copyData)
+        }
+    }
+       
 }
