@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ScreenData {
+struct ScreenState {
     
     var items = [String]()
     var searchText = ""
@@ -17,8 +17,8 @@ struct ScreenData {
         items: [String]? = nil,
         searchText: String? = nil,
         isLoading: Bool? = nil
-    ) -> ScreenData {
-        return ScreenData(
+    ) -> ScreenState {
+        return ScreenState(
             items: items ?? self.items,
             searchText: searchText ?? self.searchText,
             isLoading: isLoading ?? self.isLoading

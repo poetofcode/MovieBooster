@@ -12,18 +12,18 @@ import RxRelay
 import kmmshared
 
 class ListViewModel : ObservableObject {
-    @Published var screenData = ScreenData()
+    @Published var uiState = ScreenState()
     
     private let repository: Repository
     private let disposeBag = DisposeBag()
-    private let screenDataSeq = BehaviorRelay(value: ScreenData())
+    private let rxState = BehaviorRelay(value: ScreenState())
     private let searchTextSeq = BehaviorRelay(value: "")
     
     init(repository: Repository) {
         self.repository = repository
         
-        screenDataSeq.subscribe { [weak self] value in
-            self?.screenData = value
+        rxState.subscribe { [weak self] value in
+            self?.uiState = value
         }
         .disposed(by: disposeBag)
         
@@ -47,7 +47,7 @@ class ListViewModel : ObservableObject {
     
     func onChangeSearchText(text: String) {
         print(#function + ": \(text)")
-        screenDataSeq.accept(screenDataSeq.value.copy(searchText: text))
+        rxState.accept(rxState.value.copy(searchText: text))
         searchTextSeq.accept(text)
     }
 
@@ -55,8 +55,12 @@ class ListViewModel : ObservableObject {
         let useCase = PostUseCase(repository: PostRepository())
         
         useCase.fetchPosts(searchQuery: searchQuery) { posts in
-            self.screenDataSeq.accept(self.screenDataSeq.value.copy(items: posts.map { $0.title }))
+            self.rxState.accept(self.currState().copy(items: posts.map { $0.title }))
         }
+    }
+    
+    private func currState() -> ScreenState {
+        return rxState.value
     }
        
 }
