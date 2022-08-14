@@ -28,7 +28,7 @@ class ListViewModel : ObservableObject {
         .disposed(by: disposeBag)
         
         searchTextSeq
-            .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
+            .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
             .distinctUntilChanged()
             .map({ queryText in
                 queryText.trimming()
