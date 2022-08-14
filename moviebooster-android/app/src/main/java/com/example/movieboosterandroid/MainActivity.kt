@@ -3,8 +3,7 @@ package com.example.movieboosterandroid
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
-import com.example.kmmshared.Greeting
-import com.example.kmmshared.domain.PostRepository
+import com.example.kmmshared.data.repository.PostRepository
 import com.example.kmmshared.domain.PostUseCase
 
 class MainActivity : AppCompatActivity() {
@@ -16,7 +15,7 @@ class MainActivity : AppCompatActivity() {
 
         // Invoke shared (kmm) code
         val useCase = PostUseCase(PostRepository())
-        useCase.fetchPosts { posts ->
+        useCase.fetchPosts(searchQuery = "bL") { posts ->
             greetingTextView.text = posts.joinToString(separator = "\n") { it.title }
         }
     }
